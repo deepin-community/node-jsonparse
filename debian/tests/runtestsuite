@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+tap -R spec test/*.js

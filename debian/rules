@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@
+
+
+#override_dh_auto_build:
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+	tap -R spec test/*.js
+else
+	@echo '**********************************************************'
+	@echo 'Skip test suite                                           '
+	@echo '**********************************************************'
+endif
+
+override_dh_installexamples:
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+	dh_installexamples
+	# patch example
+	find $(CURDIR)/debian/node-jsonparse/usr/share/doc/node-jsonparse/examples/ -name '*.js' -exec \
+		sed -i "s,require\s*[(]\s*'[.][.][^']*'\s*[)],require('jsonparse'),g" {} \;
+else
+	@echo '**********************************************************'
+	@echo 'Skip example                                              '
+	@echo '**********************************************************'
+endif

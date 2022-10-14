@@ -1,0 +1,28 @@
+Source: node-jsonparse
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Bastien Roucariès <rouca@debian.org>
+Build-Depends:
+ debhelper-compat (= 12)
+ , dpkg-dev (>= 1.17.14)
+ , dh-buildinfo
+ , nodejs (>= 6)
+ , node-tape (>= 0.1.1) <!nocheck>
+ , node-tap (>= 0.3) <!nocheck>
+Standards-Version: 4.5.0
+Homepage: https://github.com/creationix/jsonparse
+Vcs-Git: https://salsa.debian.org/js-team/node-jsonparse.git
+Vcs-Browser: https://salsa.debian.org/js-team/node-jsonparse
+
+Package: node-jsonparse
+Architecture: all
+Depends:
+ ${misc:Depends}
+ , nodejs (>= 6)
+Multi-Arch: foreign
+Description: Pure javascript JSON streaming parser for node.js
+ This a simple nodejs module that parses a given JSON file and
+ returning object form suitable for grammar analysis.
+ .
+ Node.js is an event-based server-side JavaScript engine.

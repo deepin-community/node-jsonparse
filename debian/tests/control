@@ -1,0 +1,9 @@
+Tests: require
+Depends: node-jsonparse, nodejs (>=6)
+
+Tests: boundary
+Depends: node-jsonparse, node-tape (>=0.3), node-tap (>= 10), nodejs (>=6)
+
+Tests: runtestsuite
+Depends: node-jsonparse, node-tape (>=0.3), node-tap (>= 10), nodejs (>=6)
+Restrictions: allow-stderr
